@@ -10,3 +10,4 @@ A light/blue-toned color theme for neovim, implemented in Lua. Ported from the o
     - telescope
     - nvim-cmp
     - treesitter
+- custom snippets pretty print logging and print statements that wraps a log in dashes for easy reading during debugs
