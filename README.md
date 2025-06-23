@@ -4,10 +4,21 @@ A light/blue-toned color theme for neovim, implemented in Lua. Ported from the o
 
 # Todo
 
-- Implement the base structure for loading a colour scheme into 
+- improve the colour choice for dark colours (not suitable for a transparent window)
 - Fine tune the colours for every neovim element
 - Begin implementing plugin colour overrides for popular plugins
     - telescope
     - nvim-cmp
     - treesitter
-- custom snippets pretty print logging and print statements that wraps a log in dashes for easy reading during debugs
+- take some hints from material nvim for some additional colours
+- take some hints from material for some more advanced structure in the theme module
+
+
+# Getting the theme into nvim
+
+neovim seems to use the 'colorscheme' command
+
+
+# The manual is your friend!
+
+`:highlight` for list of customizable highlights
