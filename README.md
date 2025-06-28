@@ -10,6 +10,7 @@ A light/blue-toned color theme for neovim, implemented in Lua. Ported from the o
     - telescope
     - nvim-cmp
     - treesitter
+<<<<<<< HEAD
 - take some hints from material nvim for some additional colours
 - take some hints from material for some more advanced structure in the theme module
 
@@ -27,4 +28,3 @@ comment from colours/SeaShells.lua
 -- Entry point for neovim to configure and apply the theme via the :colortheme command.
 -- calling :colortheme SeaShells will automatically
 -- locate this path and call .load()
-
