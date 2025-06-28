@@ -22,3 +22,9 @@ neovim seems to use the 'colorscheme' command
 # The manual is your friend!
 
 `:highlight` for list of customizable highlights
+
+comment from colours/SeaShells.lua
+-- Entry point for neovim to configure and apply the theme via the :colortheme command.
+-- calling :colortheme SeaShells will automatically
+-- locate this path and call .load()
+
