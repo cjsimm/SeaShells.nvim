@@ -1,48 +1,125 @@
-local c = require("colors")
+local c = require("SeaShells.colors")
 
 local M = {}
 
--- Colour palette notes:
--- red light blue , yellow/orange for highlights and syntax/keywords
--- orange for keys in k:v pairs
 function M.setup()
-    local config = require("config")
-    local theme = {
-        -- k : v / highlight-group  :
-        highlights = {
-            Cursor = {}
-        },
+    local config = require("SeaShells.config")
+    local transparent = config.options.transparent
+    local bg = transparent and c.misc.none or c.ui.bg0
 
+    return {
+        Normal = { fg = c.ui.fg1, bg = bg },
+        NormalFloat = { fg = c.ui.fg1, bg = c.ui.bg1 },
+        FloatBorder = { fg = c.ui.border, bg = c.ui.bg1 },
+        FloatTitle = { fg = c.bright.yellow, bg = c.ui.bg1, bold = true },
+        ColorColumn = { bg = c.ui.bg1 },
+        Conceal = { fg = c.bright.cyan },
+        Cursor = { fg = c.cursor.text, bg = c.cursor.cursor },
+        lCursor = { fg = c.cursor.text, bg = c.cursor.cursor },
+        CursorColumn = { bg = c.ui.bg1 },
+        CursorLine = { bg = c.ui.bg1 },
+        CursorLineNr = { fg = c.bright.yellow, bold = true },
+        Directory = { fg = c.normal.cyan },
+        EndOfBuffer = { fg = c.ui.bg4 },
+        ErrorMsg = { fg = c.normal.red, bold = true },
+        FoldColumn = { fg = c.ui.fg3, bg = bg },
+        Folded = { fg = c.bright.cyan, bg = c.ui.bg1 },
+        IncSearch = { fg = c.cursor.text, bg = c.normal.yellow },
+        LineNr = { fg = c.ui.fg3 },
+        MatchParen = { fg = c.bright.white, bg = c.normal.blue, bold = true },
+        ModeMsg = { fg = c.bright.yellow, bold = true },
+        MoreMsg = { fg = c.normal.green },
+        NonText = { fg = c.ui.bg4 },
+        Pmenu = { fg = c.ui.fg1, bg = c.ui.bg1 },
+        PmenuSbar = { bg = c.ui.bg2 },
+        PmenuSel = { fg = c.bright.white, bg = c.normal.blue },
+        PmenuThumb = { bg = c.bright.black },
+        Question = { fg = c.normal.green },
+        Search = { fg = c.cursor.text, bg = c.bright.yellow },
+        SignColumn = { fg = c.ui.fg3, bg = bg },
+        SpecialKey = { fg = c.bright.black },
+        SpellBad = { sp = c.normal.red, undercurl = true },
+        SpellCap = { sp = c.normal.blue, undercurl = true },
+        SpellLocal = { sp = c.normal.cyan, undercurl = true },
+        SpellRare = { sp = c.normal.magenta, undercurl = true },
+        StatusLine = { fg = c.ui.fg0, bg = c.ui.bg2 },
+        StatusLineNC = { fg = c.ui.fg3, bg = c.ui.bg1 },
+        Substitute = { fg = c.cursor.text, bg = c.bright.red },
+        TabLine = { fg = c.ui.fg3, bg = c.ui.bg1 },
+        TabLineFill = { bg = c.ui.bg0 },
+        TabLineSel = { fg = c.bright.white, bg = c.ui.bg2, bold = true },
+        Title = { fg = c.bright.magenta, bold = true },
+        VertSplit = { fg = c.ui.border },
+        Visual = { fg = c.selection.text, bg = c.selection.background },
+        WarningMsg = { fg = c.normal.yellow },
+        WildMenu = { fg = c.cursor.text, bg = c.normal.yellow },
+        WinSeparator = { fg = c.ui.border },
+
+        Comment = { fg = c.bright.green, italic = true },
+        Constant = { fg = c.bright.yellow },
+        String = { fg = c.bright.cyan },
+        Character = { fg = c.bright.cyan },
+        Number = { fg = c.normal.yellow },
+        Boolean = { fg = c.normal.magenta },
+        Float = { fg = c.normal.yellow },
+        Identifier = { fg = c.bright.blue },
+        Function = { fg = c.normal.cyan },
+        Statement = { fg = c.normal.red },
+        Conditional = { fg = c.normal.red },
+        Repeat = { fg = c.normal.red },
+        Label = { fg = c.normal.yellow },
+        Operator = { fg = c.bright.cyan },
+        Keyword = { fg = c.bright.red },
+        Exception = { fg = c.normal.red },
+        PreProc = { fg = c.normal.magenta },
+        Include = { fg = c.bright.blue },
+        Define = { fg = c.normal.magenta },
+        Macro = { fg = c.normal.magenta },
+        PreCondit = { fg = c.bright.blue },
+        Type = { fg = c.bright.yellow },
+        StorageClass = { fg = c.bright.red },
+        Structure = { fg = c.normal.cyan },
+        Typedef = { fg = c.bright.yellow },
+        Special = { fg = c.normal.magenta },
+        SpecialChar = { fg = c.normal.magenta },
+        Tag = { fg = c.normal.yellow },
+        Delimiter = { fg = c.ui.fg2 },
+        SpecialComment = { fg = c.bright.green, italic = true },
+        Debug = { fg = c.normal.red },
+        Underlined = { fg = c.bright.blue, underline = true },
+        Ignore = { fg = c.ui.fg3 },
+        Error = { fg = c.normal.red, bg = c.diff.delete },
+        Todo = { fg = c.cursor.text, bg = c.normal.yellow, bold = true },
+
+        DiagnosticError = { fg = c.normal.red },
+        DiagnosticWarn = { fg = c.normal.yellow },
+        DiagnosticInfo = { fg = c.normal.cyan },
+        DiagnosticHint = { fg = c.bright.green },
+        DiagnosticOk = { fg = c.normal.green },
+        DiagnosticUnderlineError = { sp = c.normal.red, undercurl = true },
+        DiagnosticUnderlineWarn = { sp = c.normal.yellow, undercurl = true },
+        DiagnosticUnderlineInfo = { sp = c.normal.cyan, undercurl = true },
+        DiagnosticUnderlineHint = { sp = c.bright.green, undercurl = true },
+        DiagnosticUnderlineOk = { sp = c.normal.green, undercurl = true },
+
+        DiffAdd = { bg = c.diff.add },
+        DiffChange = { bg = c.diff.change },
+        DiffDelete = { fg = c.normal.red, bg = c.diff.delete },
+        DiffText = { bg = c.diff.text },
+
+        GitSignsAdd = { fg = c.normal.green },
+        GitSignsChange = { fg = c.normal.yellow },
+        GitSignsDelete = { fg = c.normal.red },
+
+        TreesitterContext = { bg = c.ui.bg1 },
+        TelescopeBorder = { fg = c.ui.border, bg = c.ui.bg1 },
+        TelescopeNormal = { fg = c.ui.fg1, bg = c.ui.bg1 },
+        TelescopeSelection = { fg = c.bright.white, bg = c.selection.background },
+        TelescopeMatching = { fg = c.normal.yellow, bold = true },
+        CmpItemAbbrMatch = { fg = c.bright.blue, bold = true },
+        CmpItemAbbrMatchFuzzy = { fg = c.bright.blue },
+        CmpItemKind = { fg = c.normal.magenta },
     }
-    return theme
 end
-
--- • {val}    Highlight definition map, accepts the following keys:
---            • fg: color name or "#RRGGBB", see note.
---            • bg: color name or "#RRGGBB", see note.
---            • sp: color name or "#RRGGBB"
---            • blend: integer between 0 and 100
---            • bold: boolean
---            • standout: boolean
---            • underline: boolean
---            • undercurl: boolean
---            • underdouble: boolean
---            • underdotted: boolean
---            • underdashed: boolean
---            • strikethrough: boolean
---            • italic: boolean
---            • reverse: boolean
---            • nocombine: boolean
---            • link: name of another highlight group to link to, see
---              |:hi-link|.
---            • default: Don't override existing definition |:hi-default|
---            • ctermfg: Sets foreground of cterm color |ctermfg|
---            • ctermbg: Sets background of cterm color |ctermbg|
---            • cterm: cterm attribute map, like |highlight-args|. If not
---              set, cterm attributes will match those from the attribute
---              map documented above.
---            • force: if true force update the highlight group when it
---              exists.
-
 
 return M

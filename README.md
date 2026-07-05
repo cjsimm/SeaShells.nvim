@@ -1,30 +1,26 @@
 # SeaShells
 
-A light/blue-toned color theme for neovim, implemented in Lua. Ported from the original [iterm2 seashells theme](https://github.com/mbadolato/iTerm2-Color-Schemes/tree/master). Includes an extra theme for Alacritty, copied from the [same project](https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/alacritty/SeaShells.toml) for convenience
+A dark blue/orange color theme for Neovim, implemented in Lua. It is based on the original [iTerm2 SeaShells theme](https://github.com/mbadolato/iTerm2-Color-Schemes/tree/master) and keeps the source Alacritty palette in [extras/alacritty.toml](extras/alacritty.toml) for reference.
 
-# Todo
+## Usage
+
+Add this repository to your Neovim runtime path with your plugin manager, then load:
+
+```vim
+colorscheme SeaShells
+```
+
+## Configuration
+
+The default configuration uses a transparent editor background. Override [lua/SeaShells/config.lua](lua/SeaShells/config.lua) before loading the colorscheme if you want an opaque SeaShells background.
+
+## Todo
 
 - improve the colour choice for dark colours (not suitable for a transparent window)
 - Fine tune the colours for every neovim element
 - Begin implementing plugin colour overrides for popular plugins
-    - telescope
-    - nvim-cmp
-    - treesitter
-<<<<<<< HEAD
+- telescope
+- nvim-cmp
+- treesitter
 - take some hints from material nvim for some additional colours
 - take some hints from material for some more advanced structure in the theme module
-
-
-# Getting the theme into nvim
-
-neovim seems to use the 'colorscheme' command
-
-
-# The manual is your friend!
-
-`:highlight` for list of customizable highlights
-
-comment from colours/SeaShells.lua
--- Entry point for neovim to configure and apply the theme via the :colortheme command.
--- calling :colortheme SeaShells will automatically
--- locate this path and call .load()
